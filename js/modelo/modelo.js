@@ -13,12 +13,10 @@ var Modelo = function () {
 Modelo.prototype = {
   //se obtiene el id más grande asignado a una pregunta
   obtenerUltimoId: function () {
-    var idMayor = 0;
-    for (var i = 0; i < this.preguntas.length; i++) {
-      idMayor++;
-    }
-    this.ultimoId++;
-    return idMayor;
+    var questions = this.preguntas;
+    var lastId = (questions != 0) ? questions[questions.length - 1].id : 0;
+    this.ultimoId = lastId;
+    return lastId;
   },
 
   //se agrega una pregunta dado un nombre y sus respuestas
@@ -34,10 +32,13 @@ Modelo.prototype = {
 
   /* Se borra la pregunta selecionada */
   borrarPregunta: function (index) {
-    var deleteQuestion = { 'textoPregunta': '', 'id': index, 'cantidadPorRespuesta': [] };
-    this.preguntas.splice(deleteQuestion, 1);
+    var deleteQuestion = this.preguntas.filter(function (elem) {
+      return elem.id !== index;
+    });
+    this.preguntas = deleteQuestion;
     this.guardar();
     this.preguntaEliminada.notificar();
+
   },
 
   //se guardan las preguntas
