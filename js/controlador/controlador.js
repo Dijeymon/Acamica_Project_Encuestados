@@ -12,4 +12,13 @@ Controlador.prototype = {
   borrarPregunta: function (idPregunta) {
     this.modelo.borrarPregunta(idPregunta);
   },
+  deleteAllQuestions: function () {
+    this.modelo.deleteAllQuestions();
+  },
+  agregarVoto: function (pregunta, respuestaSeleccionada) {
+    this.modelo.agregarVoto(pregunta, respuestaSeleccionada);
+  },
+  editQuestions: function (idPregunta) {
+    this.modelo.editQuestions(idPregunta);
+  }
 };
