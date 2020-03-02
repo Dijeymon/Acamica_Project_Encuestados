@@ -69,6 +69,8 @@ VistaAdministrador.prototype = {
     var contexto = this;
 
     //asociacion de eventos a boton
+
+    /**SE AGREGA UNA NUEVA ENCUESTA */
     e.botonAgregarPregunta.click(function () {
       var value = e.pregunta.val();
       var respuestas = [];
@@ -86,14 +88,14 @@ VistaAdministrador.prototype = {
 
     //asociar el resto de los botones a eventos 
 
-    /* BORRAR PREGUNTA */
+    /* BORRAR ENCUESTA */
     e.botonBorrarPregunta.click(function () {
       var id = parseInt($('.list-group-item.active').attr('id'));
       if (isNaN(id)) {
         Swal.fire({
           icon: 'error',
           title: 'Error...',
-          text: 'Seleccione la pregunta que desea eliminar !!',
+          text: 'Select the question you want to delete !!',
         });
         return false;
       }
@@ -101,19 +103,20 @@ VistaAdministrador.prototype = {
       contexto.controlador.borrarPregunta(id);
     });
 
+    /**SE BORRAN TODAS LAS ENCUENTAS */
     e.borrarTodo.click(function () {
       contexto.limpiarFormulario();
       contexto.controlador.deleteAllQuestions();
     });
 
-    /**Editar Pregunta */
+    /**EDITAR PREGUNTA */
     e.botonEditarPregunta.click(function () {
       var id = parseInt($('.list-group-item.active').attr('id'));
       if (isNaN(id)) {
         Swal.fire({
           icon: 'error',
           title: 'Error...',
-          text: 'Seleccione la pregunta que desea modificar !!',
+          text: 'Select the question you want to modify!!',
         });
         return false;
       }
