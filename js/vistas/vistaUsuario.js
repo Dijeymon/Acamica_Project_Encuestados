@@ -82,6 +82,15 @@ VistaUsuario.prototype = {
 
   agregarVotos: function () {
     var contexto = this;
+    var usuario = $('#nombreUsuario').val();
+    if (usuario === '') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error...',
+        text: 'You must enter your username !!',
+      });
+      return false;
+    }
     $('#preguntas').find('div').each(function () {
       var nombrePregunta = $(this).attr('value');
       var id = $(this).attr('id');

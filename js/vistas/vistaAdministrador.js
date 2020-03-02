@@ -89,6 +89,14 @@ VistaAdministrador.prototype = {
     /* BORRAR PREGUNTA */
     e.botonBorrarPregunta.click(function () {
       var id = parseInt($('.list-group-item.active').attr('id'));
+      if (isNaN(id)) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error...',
+          text: 'Seleccione la pregunta que desea eliminar !!',
+        });
+        return false;
+      }
       contexto.limpiarFormulario();
       contexto.controlador.borrarPregunta(id);
     });
@@ -101,6 +109,14 @@ VistaAdministrador.prototype = {
     /**Editar Pregunta */
     e.botonEditarPregunta.click(function () {
       var id = parseInt($('.list-group-item.active').attr('id'));
+      if (isNaN(id)) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error...',
+          text: 'Seleccione la pregunta que desea modificar !!',
+        });
+        return false;
+      }
       contexto.limpiarFormulario();
       contexto.controlador.editQuestions(id);
     })

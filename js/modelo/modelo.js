@@ -67,8 +67,8 @@ Modelo.prototype = {
     if (newValue === '') {
       Swal.fire({
         icon: 'error',
-        title: 'Oops...',
-        text: 'La pregunta no se ha actualizado!!',
+        title: 'Error...',
+        text: 'Enter the new value of the question !!',
       });
       return false;
     } else {
@@ -77,7 +77,6 @@ Modelo.prototype = {
       this.guardar();
       this.preguntaEditada.notificar();
     }
-
   },
 
   /**Se agregan los votos */
