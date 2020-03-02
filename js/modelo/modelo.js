@@ -31,7 +31,6 @@ Modelo.prototype = {
   //se agrega una pregunta dado un nombre y sus respuestas
   agregarPregunta: function (nombre, respuestas) {
     var id = this.obtenerUltimoId();
-    console.log(id)
     id++;
     var nuevaPregunta = { 'textoPregunta': nombre, 'id': id, 'cantidadPorRespuesta': respuestas };
     this.preguntas.push(nuevaPregunta);
